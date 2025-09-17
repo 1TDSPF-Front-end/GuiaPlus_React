@@ -3,13 +3,12 @@ import logoCompleta from '../../img/logo_completa.png'; // Verifique o caminho d
 
 
 
-
-export default function Cabecalho({ titulo }: CabecalhoProps) {
+export default function Cabecalho() {
   return (
     <nav className="navbar show-menu">
       <div className="header-inner-content">
         <img src={logoCompleta} width="130px" height="70px" alt="Logo Guia+" />
-        <h1 className="logo">{titulo}</h1>
+        <h1 className="logo"></h1>
         <nav>
           <ul>
             <li><Link to="/pagina-inicial">Home</Link></li>

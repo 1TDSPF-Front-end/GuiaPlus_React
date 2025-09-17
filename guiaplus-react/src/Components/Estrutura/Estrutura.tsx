@@ -5,9 +5,9 @@ import Rodape from '../Rodape/Rodape';
 export default function Layout() {
   return (
     <>
-      <Cabecalho titulo="Página Principal" />
-      <Outlet />
-      <Rodape />
+      <Cabecalho/>
+      <Outlet/>
+      <Rodape/>
     </>
   );
 }
