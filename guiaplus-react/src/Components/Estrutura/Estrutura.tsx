@@ -4,11 +4,11 @@ import Rodape from '../Rodape/Rodape';
 
 function Estrutura() {
   return (
-    <>
-      <Cabecalho titulo="Título da Página" />
+    <div className="container">
+      <Cabecalho titulo="Título da página" />
       <Outlet />
       <Rodape />
-    </>
+    </div>
   );
 }
 

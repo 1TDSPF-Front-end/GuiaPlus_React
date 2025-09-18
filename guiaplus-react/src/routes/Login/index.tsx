@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoCompleta from '../../assets/img/logo_completa.png'; // Verifique o caminho da imagem
+import logoCompleta from '../../assets/img/logo_completa.png';
 
 export default function Login() {
   const [nome, setNome] = useState('');

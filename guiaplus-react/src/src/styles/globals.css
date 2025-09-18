@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+
+.container {
+  @apply w-[100vw] h-[100vh] flex flex-col justify-between;
+}
+
+.navbar {
+  @apply bg-[#041d3d] text-white p-4 sticky top-0 shadow-lg z-50;
+}
+
+.header-inner-content {
+  @apply max-w-7xl mx-auto flex items-center justify-between flex-wrap;
+}
+
+.logo {
+  @apply text-xl font-bold;
+}
+
+.navbar a {
+  @apply text-white no-underline font-medium hover:text-[#c5ddfc];
+}
+
+.botao-acessibilidade {
+  @apply bg-white text-[#041d3d] font-bold text-base h-10 px-4 rounded-lg border-0;
+}
+
+.footer {
+  @apply bg-[#041d3d] text-white p-8 mt-16;
+}
+
+.footer-content {
+  @apply max-w-7xl mx-auto flex flex-col items-center gap-6;
+}
+
+.footer-links {
+  @apply flex flex-wrap justify-center gap-5;
+}
+
+.footer-links a {
+  @apply text-[#c5ddfc] no-underline font-medium transition hover:text-white hover:underline;
+}
+
+/* Estilos de página */
+.texto-pagina-inicial {
+  @apply max-w-3xl mx-auto p-5 bg-[#e6f4fd] rounded-lg shadow-md text-center text-[#333];
+}
+
+.funcoes-container {
+  @apply grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto p-5;
+}
+
+.funcao {
+  @apply bg-[#041d3d] h-72 w-64 rounded-xl flex flex-col items-center justify-center p-5 text-center shadow-xl transition hover:bg-[#0b356d] hover:scale-105;
+}
+
+.funcao a {
+  @apply text-white no-underline font-medium text-lg mt-2 transition hover:text-gray-200;
+}
+
+/* Mobile */
+@media (max-width: 599px) {
+  .header-inner-content {
+    @apply flex-col items-stretch;
+  }
+}

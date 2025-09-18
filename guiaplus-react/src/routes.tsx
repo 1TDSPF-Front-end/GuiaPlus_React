@@ -1,10 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-// Importa o componente de layout que contém o cabeçalho e rodapé
-// Cuidado com a primeira letra maiúscula! Mude para `components`
 import Estrutura from './Components/Estrutura/Estrutura';
-
-// Importa todos os componentes de página da pasta 'routes'
 import Login from './routes/Login';
 import PaginaInicial from './routes/PaginaInicial';
 import FAQ from './routes/Faq';
@@ -18,7 +13,6 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    // Rota pai que usa o componente de Estrutura como layout
     element: <Estrutura />,
     children: [
       {
