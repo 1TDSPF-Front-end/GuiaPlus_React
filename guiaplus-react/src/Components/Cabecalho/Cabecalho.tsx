@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import logoCompleta from '../../assets/img/logo_completa.png'; // O caminho para a imagem pode mudar dependendo da sua estrutura.
+import MenuAcessibilidade from '../MenuAcessibilidade'; // Importa o novo componente
+import logoCompleta from '../../assets/img/logo_completa.png'; 
 
 interface CabecalhoProps {
   titulo: string;
@@ -17,8 +18,9 @@ export default function Cabecalho({ titulo }: CabecalhoProps) {
             <li><Link to="/faq">Perguntas Frequentes</Link></li>
             <li><Link to="/integrantes">Integrantes</Link></li>
             <li><Link to="/contato">Contato</Link></li>
-            <li><button className="botao-acessibilidade"><Link to="/solucao">Solução/Proposta</Link></button></li>
           </ul>
+          {/* Renderiza o novo componente do menu de acessibilidade aqui */}
+          <MenuAcessibilidade />
         </nav>
       </div>
     </nav>
