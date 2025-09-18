@@ -1,8 +1,8 @@
-import claytonImg from '../../img/clayton.jpeg';
-import solaImg from '../../img/sola.jpeg';
-import pedroImg from '../../img/pedro.jpeg';
-import githubLogo from '../../img/github-logo.png';
-import linkedinLogo from '../../img/linkedin-logo.png';
+import claytonImg from '../../assets/img/clayton.jpeg';
+import solaImg from '../../assets/img/sola.jpeg';
+import pedroImg from '../../assets/img/pedro.jpeg';
+import githubLogo from '../../assets/img/github-logo.png';
+import linkedinLogo from '../../assets/img/linkedin-logo.png';
 
 export default function Integrantes() {
   return (
