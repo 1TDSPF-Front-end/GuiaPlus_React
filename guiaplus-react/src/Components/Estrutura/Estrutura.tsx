@@ -9,7 +9,9 @@ function Estrutura() {
   return (
     <div className="container">
       <Cabecalho titulo={tituloDaRota} />
-      <Outlet />
+      <main className="main-content">
+        <Outlet />
+      </main>
       <Rodape />
     </div>
   );

@@ -11,7 +11,7 @@ export default function MenuAcessibilidade() {
     <div className="relative">
       <button 
         onClick={toggleMenu} 
-        className="botao-acessibilidade bg-gray-500 text-white font-bold py-2 px-4 rounded"
+        className="botao-acessibilidade"
       >
         Acessibilidade
       </button>
@@ -22,10 +22,7 @@ export default function MenuAcessibilidade() {
             Aumentar Fonte
           </button>
           <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-            Alto Contraste
-          </button>
-          <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-            Menu de Voz
+            Dúvida por Voz
           </button>
         </div>
       )}
