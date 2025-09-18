@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
-import logoCompleta from '../../img/logo_completa.png'; // Verifique o caminho da imagem
+import logoCompleta from '../../assets/img/logo_completa.png'; // O caminho para a imagem pode mudar dependendo da sua estrutura.
 
+interface CabecalhoProps {
+  titulo: string;
+}
 
-
-export default function Cabecalho() {
+export default function Cabecalho({ titulo }: CabecalhoProps) {
   return (
     <nav className="navbar show-menu">
       <div className="header-inner-content">
         <img src={logoCompleta} width="130px" height="70px" alt="Logo Guia+" />
-        <h1 className="logo"></h1>
+        <h1 className="logo">{titulo}</h1>
         <nav>
           <ul>
             <li><Link to="/pagina-inicial">Home</Link></li>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logoCompleta from '../../img/logo_completa.png'; // Verifique o caminho da imagem
+import logoCompleta from '../../assets/img/logo_completa.png'; // Verifique o caminho da imagem
 
 export default function Rodape() {
   return (
