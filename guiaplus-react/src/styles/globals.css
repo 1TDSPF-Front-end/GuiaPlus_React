@@ -121,7 +121,7 @@
 }
 
 .funcoes-container {
-  @apply grid grid-cols-2 gap-4 max-w-5xl mx-auto p-5 justify-items-center;
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center mt-8 mx-auto max-w-4xl px-4;
 }
 
 .funcao {
@@ -129,7 +129,7 @@
 }
 
 .funcao a {
-  @apply text-white no-underline font-medium text-lg mt-2 transition duration-300 hover:text-gray-200;
+  @apply flex flex-col items-center text-center text-white;
 }
 
 .lembrete-img,
