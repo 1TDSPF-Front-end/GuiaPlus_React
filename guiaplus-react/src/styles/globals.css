@@ -290,30 +290,131 @@
   @apply text-center text-lg text-gray-700 mb-6;
 }
 
-/* Responsividade */
-@media (max-width: 599px) {
-  .header-inner-content {
-    @apply flex-col items-stretch;
-  }
-}
+/* ---------------------------------------------------- */
+/* Responsividade com media queries (globals.css)       */
+/* ---------------------------------------------------- */
 
+/* Celulares pequenos até 600px */
 @media (max-width: 600px) {
-  .body-login {
-    @apply p-2;
+  .navbar {
+    @apply flex flex-col items-center text-sm gap-2 p-3;
   }
-  .header-login img {
-    @apply w-32;
+
+  .header-inner-content {
+    @apply flex flex-col items-center gap-2;
   }
+
+  .navbar ul {
+    @apply flex flex-col items-center gap-2;
+  }
+
+  .navbar a {
+    @apply text-sm;
+  }
+
+  .botao-acessibilidade {
+    @apply w-32 h-9 text-sm;
+  }
+
+  .funcoes-container {
+    @apply grid-cols-1;
+  }
+
+  .funcao {
+    @apply w-48 h-56 text-sm;
+  }
+
+  .suporte-container {
+    @apply p-3 text-sm;
+  }
+
+  .texto-pagina-inicial,
+  .texto-integrantes,
+  .texto-acessibilidade {
+    @apply p-3 text-sm;
+  }
+
+  .footer {
+    @apply p-5 text-sm;
+  }
+
   .formulario-login {
-    @apply p-5;
+    @apply p-4;
   }
+
   .form-label {
     @apply text-base;
   }
+
   .form-input {
-    @apply text-sm p-3;
+    @apply text-sm p-2;
   }
+
   .btn-entrar {
-    @apply text-base p-3;
+    @apply text-base p-2;
+  }
+}
+
+/* Celulares grandes e tablets pequenos (601px – 767px) */
+@media (min-width: 601px) and (max-width: 767px) {
+  .navbar {
+    @apply p-3 text-base;
+  }
+
+  .funcoes-container {
+    @apply grid-cols-2;
+  }
+
+  .funcao {
+    @apply w-52 h-64;
+  }
+
+  .suporte-container {
+    @apply p-5;
+  }
+}
+
+/* Tablets médios (768px – 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar {
+    @apply p-4 text-lg;
+  }
+
+  .funcao {
+    @apply w-56 h-64;
+  }
+
+  .suporte-container {
+    @apply p-6;
+  }
+}
+
+/* Notebooks e desktops médios (992px – 1299px) */
+@media (min-width: 992px) and (max-width: 1299px) {
+  .navbar {
+    @apply p-5 text-lg;
+  }
+
+  .funcao {
+    @apply w-60 h-72;
+  }
+
+  .suporte-container {
+    @apply p-6;
+  }
+}
+
+/* Desktops grandes (1300px+) */
+@media (min-width: 1300px) {
+  .navbar {
+    @apply p-6 text-xl;
+  }
+
+  .funcao {
+    @apply w-64 h-72;
+  }
+
+  .suporte-container {
+    @apply p-8;
   }
 }
