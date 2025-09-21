@@ -240,6 +240,43 @@
   @apply max-w-40 p-3 bg-[#0078d4] text-white font-bold text-base border-none rounded-lg cursor-pointer transition duration-300 self-start hover:bg-[#005a9e] focus:outline-none focus:ring-2 focus:ring-[#0078d4];
 }
 
+/* Estilos de login */
+.body-login {
+  @apply bg-[#001f3f] text-white font-sans flex flex-col items-center justify-center min-h-screen text-center p-5;
+}
+
+.header-login h1 {
+  @apply font-sans;
+}
+
+.header-login img {
+  @apply w-40 h-auto mt-2;
+}
+
+.formulario-login {
+  @apply bg-[#001f3f] p-8 rounded-2xl shadow-lg w-full max-w-lg;
+}
+
+.form-fieldset {
+  @apply border-none flex flex-col gap-4;
+}
+
+.form-label {
+  @apply text-lg text-left font-sans;
+}
+
+.form-input {
+  @apply p-3 text-base border-none rounded-lg bg-gray-300 text-black w-full;
+}
+
+.btn-entrar {
+  @apply p-3 text-lg font-bold text-white bg-transparent border-2 border-white rounded-lg cursor-pointer transition duration-300 hover:bg-white hover:text-[#001f3f];
+}
+
+.error-msg {
+  @apply w-full block bg-[#ee9292] text-[#e91111] mt-1 p-2 rounded-md border border-[#e91111] text-center;
+}
+
 /*Estilos da pag suporte*/
 .suporte-container {
   @apply max-w-4xl mx-auto my-10 p-6 bg-[#c5ddfc] rounded-2xl shadow;
