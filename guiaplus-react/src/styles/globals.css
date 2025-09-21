@@ -233,6 +233,21 @@
   @apply w-full block bg-[#ee9292] text-[#e91111] mt-1 p-2 rounded-md border border-[#e91111] text-center;
 }
 
+/*Estilos da pag suporte*/
+
+.suporte-container {
+  @apply max-w-4xl mx-auto my-10 p-6 bg-[#c5ddfc] rounded-2xl shadow;
+}
+
+.suporte-titulo {
+  @apply text-center text-3xl font-bold text-[#041d3d] mb-4;
+}
+
+.suporte-texto {
+  @apply text-center text-lg text-gray-700 mb-6;
+}
+
+
 /* Responsividade */
 @media (max-width: 599px) {
   .header-inner-content {

@@ -20,7 +20,7 @@ export default function PaginaInicial() {
           </Link>
         </div>
         <div className="funcao">
-          <Link to="#">
+          <Link to="/suporte">
             <img className="suporte-img" src={suporteImg} alt="suporte" />
             <h2>Suporte</h2>
           </Link>

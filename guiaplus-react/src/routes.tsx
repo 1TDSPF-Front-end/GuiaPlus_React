@@ -6,6 +6,7 @@ import FAQ from './routes/Faq';
 import Integrantes from './routes/Integrantes';
 import Contato from './routes/Contato';
 import Tutoriais from './routes/Tutoriais';
+import Suporte from './routes/Suporte';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         path: '/tutoriais',
         element: <Tutoriais />,
         handle: { titulo: 'Tutoriais em Vídeo' },
+      },
+      {
+      path: "/suporte", 
+      element: <Suporte />,
+      handle: { titulo: 'Suporte' },
       },
     ],
   },
