@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
-import logoCompleta from '../../assets/img/logo_completa.png'; // Verifique o caminho da imagem
+import logoCompleta from '../../assets/img/logo_completa.png'; 
+import { AccessibilityProvider } from '../../contexts/AccessibilityContext';
+import { useAccessibility } from '../../contexts/AccessibilityContext';
 
 export default function Rodape() {
+    const { fontSize, highContrast } = useAccessibility();
+    const mainClassName = highContrast ? 'alto-contraste' : '';
   return (
     <footer className="footer">
       <div className="footer-content">

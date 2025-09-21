@@ -1,17 +1,57 @@
 @import "tailwindcss";
 
-.container {
-  @apply min-h-screen flex flex-col justify-between;
+/* -------------------------------------- */
+/* Estilos de acessibilidade */
+/* -------------------------------------- */
+
+/* MODO DE ALTO CONTRASTE (APENAS CABEÇALHO, RODAPÉ E PÁGINA INICIAL) */
+.alto-contraste .navbar {
+  @apply bg-black text-white;
 }
 
-/* Esta é a classe que centraliza o conteúdo principal */
-.main-content {
-  @apply flex-1 w-full max-w-7xl mx-auto p-5;
+.alto-contraste .navbar a,
+.alto-contraste .navbar h1 {
+  @apply text-white;
 }
 
-/* ... e o restante do seu CSS com @apply ... */
+.alto-contraste .navbar img {
+  filter: grayscale(100%) brightness(0);
+}
 
-/* Estilos gerais do site (não-login) */
+.alto-contraste .footer {
+  @apply bg-black text-white;
+}
+
+.alto-contraste .footer a,
+.alto-contraste .footer p {
+  @apply text-white;
+}
+
+.alto-contraste .funcoes-container .funcao {
+  @apply bg-black;
+}
+
+.alto-contraste .funcao h2,
+.alto-contraste .funcao a {
+  @apply text-white;
+}
+
+
+.alto-contraste .texto-pagina-inicial {
+  @apply bg-black text-white;
+}
+
+.alto-contraste .texto-pagina-inicial h1,
+.alto-contraste .texto-pagina-inicial p {
+  @apply text-white;
+}
+
+
+
+/* -------------------------------------- */
+/* Estilos do site (normal) */
+/* -------------------------------------- */
+
 .navbar {
   @apply bg-[#041d3d] font-bold p-4 sticky top-0 shadow-lg z-50 text-white w-screen;
 }
@@ -22,6 +62,10 @@
 
 .logo {
   @apply text-xl font-bold;
+}
+
+.navbar ul {
+  @apply flex items-center space-x-6;
 }
 
 .navbar a {
@@ -121,7 +165,7 @@
 }
 
 .funcoes-container {
-  @apply grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center mt-8 mx-auto max-w-4xl px-4;
+  @apply grid grid-cols-2 gap-4 max-w-5xl mx-auto p-5 justify-items-center;
 }
 
 .funcao {
@@ -156,7 +200,7 @@
 }
 
 .faq-lista details {
-  @apply bg-gray-100 mb-3 p-4 rounded-lg cursor-pointer transition duration-300 hover:bg-gray-200;
+  @apply bg-gray-100 mb-3 p-4 rounded-lg cursor-pointer hover:bg-gray-200;
 }
 
 .faq-lista summary {
@@ -196,45 +240,7 @@
   @apply max-w-40 p-3 bg-[#0078d4] text-white font-bold text-base border-none rounded-lg cursor-pointer transition duration-300 self-start hover:bg-[#005a9e] focus:outline-none focus:ring-2 focus:ring-[#0078d4];
 }
 
-/* Estilos de login */
-.body-login {
-  @apply bg-[#001f3f] text-white font-sans flex flex-col items-center justify-center min-h-screen text-center p-5;
-}
-
-.header-login h1 {
-  @apply font-sans;
-}
-
-.header-login img {
-  @apply w-40 h-auto mt-2;
-}
-
-.formulario-login {
-  @apply bg-[#001f3f] p-8 rounded-2xl shadow-lg w-full max-w-lg;
-}
-
-.form-fieldset {
-  @apply border-none flex flex-col gap-4;
-}
-
-.form-label {
-  @apply text-lg text-left font-sans;
-}
-
-.form-input {
-  @apply p-3 text-base border-none rounded-lg bg-gray-300 text-black w-full;
-}
-
-.btn-entrar {
-  @apply p-3 text-lg font-bold text-white bg-transparent border-2 border-white rounded-lg cursor-pointer transition duration-300 hover:bg-white hover:text-[#001f3f];
-}
-
-.error-msg {
-  @apply w-full block bg-[#ee9292] text-[#e91111] mt-1 p-2 rounded-md border border-[#e91111] text-center;
-}
-
 /*Estilos da pag suporte*/
-
 .suporte-container {
   @apply max-w-4xl mx-auto my-10 p-6 bg-[#c5ddfc] rounded-2xl shadow;
 }
@@ -246,7 +252,6 @@
 .suporte-texto {
   @apply text-center text-lg text-gray-700 mb-6;
 }
-
 
 /* Responsividade */
 @media (max-width: 599px) {
