@@ -7,6 +7,7 @@ import Integrantes from './routes/Integrantes';
 import Contato from './routes/Contato';
 import Tutoriais from './routes/Tutoriais';
 import Suporte from './routes/Suporte';
+import Lembretes from "./routes/Lembretes";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
       element: <Suporte />,
       handle: { titulo: 'Suporte' },
       },
+      {
+      path: "/lembretes",
+      element: <Lembretes />,
+       handle: { titulo: "Lembretes" },
+      }
     ],
   },
 ]);

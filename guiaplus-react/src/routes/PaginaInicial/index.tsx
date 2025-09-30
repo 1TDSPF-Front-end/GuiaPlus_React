@@ -18,7 +18,7 @@ export default function PaginaInicial() {
 
       <div className="funcoes-container">
         <div className="funcao">
-          <Link to="#">
+          <Link to="/lembretes">
             <img className="lembrete-img" src={lembretesIcon} alt="lembretes" />
             <h2>Agendar Lembrete</h2>
           </Link>
