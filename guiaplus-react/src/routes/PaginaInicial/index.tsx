@@ -30,7 +30,7 @@ export default function PaginaInicial() {
           </Link>
         </div>
         <div className="funcao">
-          <Link to="#">
+          <Link to="/teleconsultas">
             <img className="teleconsulta" src={teleconsultaIcon} alt="teleconsultas" />
             <h2>Teleconsultas</h2>
           </Link>

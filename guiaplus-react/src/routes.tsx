@@ -8,6 +8,7 @@ import Contato from './routes/Contato';
 import Tutoriais from './routes/Tutoriais';
 import Suporte from './routes/Suporte';
 import Lembretes from "./routes/Lembretes";
+import Teleconsultas from "./routes/Teleconsulta";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
       path: "/lembretes",
       element: <Lembretes />,
        handle: { titulo: "Lembretes" },
+      },
+      {
+      path: "/teleconsultas",
+      element: <Teleconsultas />,
+      handle: { titulo: "Teleconsultas" },
       }
     ],
   },
