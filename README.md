@@ -16,7 +16,7 @@ forma prática e sem barreiras.
 
 ### 1. Login
 
--   Tela inicial de autenticação do usuário.\
+-   Tela inicial de autenticação do usuário.
 -   Entrada de nome completo e CPF para acesso.
 
 
@@ -25,10 +25,10 @@ forma prática e sem barreiras.
 ### 2. Página Inicial / Funcionalidades
 
 -   Exibe os principais atalhos:
-    -   Agendar lembrete\
-    -   Teleconsulta\
-    -   Suporte\
-    -   Vídeos com tutoriais\
+    -   Agendar lembrete
+    -   Teleconsulta
+    -   Suporte
+    -   Vídeos com tutoriais
 -   Interface simples e acessível para todas as idades.
 
 
@@ -36,7 +36,7 @@ forma prática e sem barreiras.
 
 ### 3. Integrantes
 
--   Página dedicada aos membros do projeto.\
+-   Página dedicada aos membros do projeto.
 -   Exibe nome, foto e links para perfis de GitHub e LinkedIn.
 
 
@@ -45,7 +45,7 @@ forma prática e sem barreiras.
 ### 4. Acessibilidade
 
 -   Criada para atender pessoas com deficiência física, intelectual ou
-    com baixa familiaridade com tecnologia.\
+    com baixa familiaridade com tecnologia.
 -   Disponibiliza botões grandes, ícones ilustrativos e narração em
     áudio.
 
@@ -54,8 +54,8 @@ forma prática e sem barreiras.
 
 ### 5. Lembretes
 
--   Ferramenta prática para adicionar lembretes personalizados.\
--   Permite inserir descrição e data.\
+-   Ferramenta prática para adicionar lembretes personalizados.
+-   Permite inserir descrição e data.
 -   Opções para confirmar conclusão ou excluir lembrete.
 
 
@@ -63,7 +63,7 @@ forma prática e sem barreiras.
 
 ### 6. Perguntas Frequentes (FAQ)
 
--   Seção com respostas rápidas para dúvidas comuns.\
+-   Seção com respostas rápidas para dúvidas comuns.
 -   Botões expansíveis para mostrar explicações.
 
 
@@ -71,7 +71,7 @@ forma prática e sem barreiras.
 
 ### 7. Vídeos
 
--   Disponibiliza vídeos tutoriais explicativos.\
+-   Disponibiliza vídeos tutoriais explicativos.
 -   Ajuda o usuário a entender e utilizar a plataforma com facilidade.
 
 
@@ -79,7 +79,7 @@ forma prática e sem barreiras.
 
 ### 8. Contato
 
--   Formulário simples para envio de mensagens.\
+-   Formulário simples para envio de mensagens.
 -   Permite que o usuário entre em contato com a equipe de suporte.
 
 
@@ -87,7 +87,7 @@ forma prática e sem barreiras.
 
 ### 9. Teleconsultas
 
--   Guia passo a passo para uso da teleconsulta.\
+-   Guia passo a passo para uso da teleconsulta.
 -   Explicações com linguagem simples, voltada para idosos e pessoas com
     pouca familiaridade tecnológica.
 
