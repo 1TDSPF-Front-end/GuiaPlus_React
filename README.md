@@ -14,6 +14,10 @@ forma prática e sem barreiras.
 
 ## Funcionalidades
 
+### Link do repositorio GitHub
+
+-   https://github.com/1TDSPF-Front-end/GuiaPlus_React
+
 ### 1. Login
 
 -   Tela inicial de autenticação do usuário.
