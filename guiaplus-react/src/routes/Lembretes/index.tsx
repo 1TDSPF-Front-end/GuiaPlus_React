@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useAccessibility } from '../../contexts/AccessibilityContext';
-import { useNavigate } from 'react-router-dom';
+import { useAccessibility } from "../../contexts/AccessibilityContext";
+import { useNavigate } from "react-router-dom";
 
 type Lembrete = {
   id: string;
@@ -14,16 +14,16 @@ export default function Lembretes() {
   const [novoTexto, setNovoTexto] = useState("");
   const [novaData, setNovaData] = useState("");
   const { fontSize, highContrast } = useAccessibility();
-  const accessibilityClass = highContrast ? 'alto-contraste' : '';
+  const accessibilityClass = highContrast ? "alto-contraste" : "";
   const navigate = useNavigate();
 
-  // Carregar lembretes salvos usando useEffect
+  // Carregar lembretes salvos
   useEffect(() => {
     const raw = localStorage.getItem("lembretes");
     if (raw) setLembretes(JSON.parse(raw));
   }, []);
 
-  // Salvar lembretes usando useEffect
+  // Salvar lembretes
   useEffect(() => {
     localStorage.setItem("lembretes", JSON.stringify(lembretes));
   }, [lembretes]);
@@ -36,43 +36,41 @@ export default function Lembretes() {
       data: novaData,
       concluido: false,
     };
-    setLembretes([...lembretes, novo]);
+    setLembretes((prev) => [...prev, novo]);
     setNovoTexto("");
     setNovaData("");
   }
 
   function toggle(id: string) {
-    setLembretes(
-      lembretes.map((l) =>
-        l.id === id ? { ...l, concluido: !l.concluido } : l
-      )
+    setLembretes((prev) =>
+      prev.map((l) => (l.id === id ? { ...l, concluido: !l.concluido } : l))
     );
   }
 
   function remover(id: string) {
-    setLembretes(lembretes.filter((l) => l.id !== id));
+    setLembretes((prev) => prev.filter((l) => l.id !== id));
   }
 
   return (
-    <div 
-      className={`main-content ${accessibilityClass} p-4 md:p-6`} 
-      style={{ fontSize: fontSize === 'large' ? '1.2rem' : '1rem' }}
+    <div
+      className={`main-content ${accessibilityClass} p-4 md:p-6`}
+      style={{ fontSize: fontSize === "large" ? "1.2rem" : "1rem" }}
     >
       <div className="max-w-2xl mx-auto w-full">
         <h2 className="text-2xl font-bold mb-4">Agendamento de Lembretes</h2>
 
-        {/* Formulário Responsivo: flex-col no mobile, md:flex-row no desktop */}
+        {/* Formulário */}
         <div className="flex flex-col md:flex-row gap-2 mb-6">
           <input
             type="text"
             placeholder="Adicionar lembrete..."
-            className="flex-1 border p-2 rounded w-full md:w-auto" // w-full para mobile
+            className="flex-1 border p-2 rounded w-full md:w-auto"
             value={novoTexto}
             onChange={(e) => setNovoTexto(e.target.value)}
           />
           <input
             type="date"
-            className="border p-2 rounded w-full md:w-auto" // w-full para mobile
+            className="border p-2 rounded w-full md:w-auto"
             value={novaData}
             onChange={(e) => setNovaData(e.target.value)}
           />
@@ -84,12 +82,38 @@ export default function Lembretes() {
           </button>
         </div>
 
-        {/* Lista de Lembretes Responsiva */}
+        {/* Tutorial – bloco inserido */}
+        <div className="mb-8 p-4 border rounded bg-gray-50">
+          <h3 className="text-xl font-semibold mb-3">Como usar os lembretes</h3>
+          <ol className="list-decimal pl-5 space-y-2">
+            <li>
+              <strong>Escreva o lembrete:</strong> digite no campo de texto o
+              que deseja lembrar (ex.: "Consulta com o cardiologista").
+            </li>
+            <li>
+              <strong>Escolha a data:</strong> selecione no calendário o dia do
+              lembrete.
+            </li>
+            <li>
+              <strong>Adicione:</strong> clique no botão{" "}
+              <span className="font-bold">+</span> para salvar.
+            </li>
+            <li>
+              <strong>Marcar como concluído:</strong> quando realizar a tarefa,
+              clique no botão ✔.
+            </li>
+            <li>
+              <strong>Excluir:</strong> se não precisar mais, clique no botão ❌
+              para remover.
+            </li>
+          </ol>
+        </div>
+
+        {/* Lista de Lembretes */}
         <ul className="space-y-3">
           {lembretes.map((l) => (
             <li
               key={l.id}
-              /* Stacks verticalmente no mobile (flex-col) e volta para linha no sm:flex-row */
               className="flex flex-col sm:flex-row items-start sm:items-center justify-between border p-3 rounded w-full shadow bg-white"
             >
               <div className="mb-2 sm:mb-0">
