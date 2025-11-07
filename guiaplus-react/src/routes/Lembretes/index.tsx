@@ -2,54 +2,165 @@ import { useState, useEffect } from "react";
 import { useAccessibility } from "../../contexts/AccessibilityContext";
 import { useNavigate } from "react-router-dom";
 
-type Lembrete = {
-  id: string;
-  texto: string;
-  data: string;
+// 🚨 ATENÇÃO: SUBSTITUA ESTE ENDPOINT PELA URL PÚBLICA DA SUA API JAVA
+const API_URL = "https://api-java-guiaplus.onrender.com/lembrete";
+
+// --- TIPOS ADAPTADOS DA ESTRUTURA JAVA ---
+// Baseado no Lembrete.java (id_lembrete, nome, descricaoLembrete, dataLembrete)
+interface LembreteAPI {
+  id_lembrete: number;
+  nome: string;
+  descricaoLembrete: string;
+  dataLembrete: string; // Usamos string para o formato de data/hora do input/JSON
+}
+
+// Tipo que o Front-End USA (adiciona 'concluido' para o estado visual)
+interface LembreteFrontend extends LembreteAPI {
   concluido: boolean;
-};
+}
+// --- FIM DOS TIPOS ---
 
 export default function Lembretes() {
-  const [lembretes, setLembretes] = useState<Lembrete[]>([]);
+  const [lembretes, setLembretes] = useState<LembreteFrontend[]>([]);
   const [novoTexto, setNovoTexto] = useState("");
   const [novaData, setNovaData] = useState("");
   const { fontSize, highContrast } = useAccessibility();
   const accessibilityClass = highContrast ? "alto-contraste" : "";
   const navigate = useNavigate();
+  
+  // ----------------------------------------------------
+  // READ (GET) - Busca dados da API
+  // ----------------------------------------------------
+  const buscarLembretes = async () => {
+    try {
+      // 1. Requisita os dados com GET [cite: uploaded:tailwindcss_merged.pdf]
+      const response = await fetch(API_URL); 
+      
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      
+      const data: LembreteAPI[] = await response.json();
+      
+      // Mapeamento: Adiciona a flag 'concluido' (status visual do Front-End)
+      const mappedData: LembreteFrontend[] = data.map(item => ({
+        ...item,
+        concluido: false, // Assume não concluído ao carregar
+      }));
+      
+      setLembretes(mappedData);
+      
+    } catch (error) {
+      console.error("Falha na API (GET):", error);
+      // Feedback visual simples ao usuário
+      alert("Erro ao carregar lembretes da API. Verifique a URL do servidor Java.");
+    }
+  };
 
-  // Carregar lembretes salvos
+  // Executa a busca na montagem do componente [cite: uploaded:tailwindcss_merged.pdf]
   useEffect(() => {
-    const raw = localStorage.getItem("lembretes");
-    if (raw) setLembretes(JSON.parse(raw));
-  }, []);
+    buscarLembretes();
+  }, []); 
 
-  // Salvar lembretes
-  useEffect(() => {
-    localStorage.setItem("lembretes", JSON.stringify(lembretes));
-  }, [lembretes]);
-
-  function adicionar() {
+  // ----------------------------------------------------
+  // CREATE (POST) - Adicionar novo lembrete
+  // ----------------------------------------------------
+  const adicionar = async () => {
     if (!novoTexto.trim() || !novaData) return;
-    const novo: Lembrete = {
-      id: crypto.randomUUID(),
-      texto: novoTexto,
-      data: novaData,
-      concluido: false,
+
+    const lembreteParaEnvio = {
+      // Usamos 'novoTexto' para os campos que a API espera
+      nome: novoTexto, 
+      descricaoLembrete: novoTexto, 
+      dataLembrete: novaData,
     };
-    setLembretes((prev) => [...prev, novo]);
-    setNovoTexto("");
-    setNovaData("");
-  }
 
-  function toggle(id: string) {
-    setLembretes((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, concluido: !l.concluido } : l))
-    );
-  }
+    try {
+      // 2. Envia os dados com POST [cite: uploaded:tailwindcss_merged.pdf]
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lembreteParaEnvio),
+      });
 
-  function remover(id: string) {
-    setLembretes((prev) => prev.filter((l) => l.id !== id));
-  }
+      if (!response.ok) {
+        throw new Error("Falha ao salvar lembrete.");
+      }
+
+      // Limpa os campos e recarrega a lista
+      setNovoTexto("");
+      setNovaData("");
+      await buscarLembretes(); 
+
+    } catch (error) {
+      console.error("Falha na API (POST):", error);
+      alert("Erro ao adicionar lembrete.");
+    }
+  };
+  
+  // ----------------------------------------------------
+  // UPDATE (PUT) - Marcar/Desmarcar como concluído
+  // ----------------------------------------------------
+  const toggle = async (lembrete: LembreteFrontend) => {
+    // Alterna o status localmente para a UI
+    const statusConcluido = !lembrete.concluido;
+
+    // Objeto para envio (PUT)
+    const lembreteParaPut = {
+      // A API espera o ID para saber qual registro atualizar
+      id_lembrete: lembrete.id_lembrete,
+      nome: lembrete.nome,
+      descricaoLembrete: lembrete.descricaoLembrete,
+      dataLembrete: lembrete.dataLembrete,
+      // Se a sua API Java tiver o campo 'concluido', você o enviaria aqui:
+      // concluido: statusConcluido 
+    };
+
+    try {
+      // 3. Envia a atualização com PUT
+      const response = await fetch(`${API_URL}/${lembrete.id_lembrete}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lembreteParaPut),
+      });
+
+      if (!response.ok) {
+        throw new Error("Falha ao atualizar status.");
+      }
+
+      // Atualiza o estado local para refletir a mudança
+      setLembretes(
+        lembretes.map((l) =>
+          l.id_lembrete === lembrete.id_lembrete ? { ...lembrete, concluido: statusConcluido } : l
+        )
+      );
+
+    } catch (error) {
+      console.error("Falha na API (PUT):", error);
+    }
+  };
+
+
+  // ----------------------------------------------------
+  // DELETE - Remover lembrete
+  // ----------------------------------------------------
+  const remover = async (id: number) => {
+    try {
+      // 4. Deleta o registro com DELETE
+      const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+
+      if (!response.ok) {
+        throw new Error("Falha ao remover lembrete.");
+      }
+
+      // Remove da lista localmente
+      setLembretes((prev) => prev.filter((l) => l.id_lembrete !== id));
+      
+    } catch (error) {
+      console.error("Falha na API (DELETE):", error);
+      alert("Erro ao remover lembrete.");
+    }
+  };
 
   return (
     <div
@@ -113,7 +224,7 @@ export default function Lembretes() {
         <ul className="space-y-3">
           {lembretes.map((l) => (
             <li
-              key={l.id}
+              key={l.id_lembrete}
               className="flex flex-col sm:flex-row items-start sm:items-center justify-between border p-3 rounded w-full shadow bg-white"
             >
               <div className="mb-2 sm:mb-0">
@@ -122,20 +233,20 @@ export default function Lembretes() {
                     l.concluido ? "line-through text-gray-500" : "text-gray-900"
                   }`}
                 >
-                  {l.texto}
+                  {l.descricaoLembrete} {/* Campo Java */}
                 </span>
-                <div className="text-sm text-gray-600">{l.data}</div>
+                <div className="text-sm text-gray-600">{l.dataLembrete}</div> {/* Campo Java */}
               </div>
               <div className="flex gap-2 mt-2 sm:mt-0">
                 <button
                   className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700 transition"
-                  onClick={() => toggle(l.id)}
+                  onClick={() => toggle(l)}
                 >
                   {l.concluido ? "Desfazer" : "✔"}
                 </button>
                 <button
                   className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition"
-                  onClick={() => remover(l.id)}
+                  onClick={() => remover(l.id_lembrete)}
                 >
                   ❌
                 </button>
