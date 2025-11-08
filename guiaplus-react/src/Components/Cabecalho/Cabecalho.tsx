@@ -8,9 +8,9 @@ interface CabecalhoProps {
 }
 
 export default function Cabecalho({ titulo }: CabecalhoProps) {
-  const { fontSize, highContrast } = useAccessibility();
+  const { fontSize, highContrast } = useAccessibility(); 
   const navClassName = highContrast ? 'navbar alto-contraste' : 'navbar';
-  const linkClassName = fontSize ? 'aumentar-fonte' : '';
+  const linkClassName = fontSize === 'large' ? 'aumentar-fonte' : '';
 
   return (
     <nav className={navClassName}>
@@ -21,8 +21,10 @@ export default function Cabecalho({ titulo }: CabecalhoProps) {
             <span className={linkClassName}>{titulo}</span>
           </h1>
         </div>
+        
+        {/* CORREÇÃO AQUI: Garante que o menu de navegação seja Flexbox */}
         <div className="flex items-center space-x-6">
-          <ul className="flex items-center space-x-6">
+          <ul className="flex items-center space-x-6"> {/* Aplica a regra de linha aqui */}
             <li><Link to="/pagina-inicial" className={linkClassName}>Home</Link></li>
             <li><Link to="/faq" className={linkClassName}>Perguntas Frequentes</Link></li>
             <li><Link to="/integrantes" className={linkClassName}>Integrantes</Link></li>
