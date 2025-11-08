@@ -1,42 +1,68 @@
-import React, { createContext, useState, useContext } from 'react';
-import type { ReactNode } from 'react'; // Importação corrigida para o tipo
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import type { ReactNode } from 'react';
 
-interface AccessibilityContextType {
-  fontSize: 'normal' | 'large';
-  highContrast: boolean;
-  toggleFontSize: () => void;
-  toggleHighContrast: () => void;
+type Theme = 'light' | 'dark';
+
+interface ThemeContextType {
+    theme: Theme;
+    toggleTheme: () => void;
 }
 
-const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-interface AccessibilityProviderProps {
-  children: ReactNode;
+interface ThemeProviderProps {
+    children: ReactNode;
 }
 
-export const AccessibilityProvider: React.FC<AccessibilityProviderProps> = ({ children }) => {
-  const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
-  const [highContrast, setHighContrast] = useState(false);
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+    // Estado inicial: Tenta ler do localStorage ou usa 'light' como padrão
+    const [theme, setThemeState] = useState<Theme>(() => {
+        const savedTheme = localStorage.getItem('theme') as Theme;
+        return savedTheme || 'light';
+    });
 
-  const toggleFontSize = () => {
-    setFontSize(currentSize => (currentSize === 'normal' ? 'large' : 'normal'));
-  };
+    // Função de toggle (manual) para o botão
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setThemeState(newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
+    
+    // Efeito para aplicar a classe 'dark-mode' ao body/html
+    useEffect(() => {
+        // Isso aplica a classe 'dark-mode' ou a remove (deixando o tema claro)
+        document.documentElement.className = theme === 'dark' ? 'dark-mode' : '';
+        // ⚠️ Adiciona classe de fonte se a lógica estiver no contexto
+        // document.documentElement.classList.add(fontSize === 'large' ? 'aumentar-fonte' : '');
+    }, [theme]); // Depende apenas da variável theme
 
-  const toggleHighContrast = () => {
-    setHighContrast(currentContrast => !currentContrast);
-  };
+    // O useEffect abaixo garante que, na primeira carga, o tema seja pego do sistema 
+    // se NADA estiver salvo, mas sem causar loop.
+    useEffect(() => {
+        const checkSystemPreference = () => {
+             if (!localStorage.getItem('theme')) {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    setThemeState('dark');
+                }
+             }
+        };
+        // Tenta rodar a checagem do sistema apenas uma vez na montagem
+        checkSystemPreference();
+    }, []); 
 
-  return (
-    <AccessibilityContext.Provider value={{ fontSize, highContrast, toggleFontSize, toggleHighContrast }}>
-      {children}
-    </AccessibilityContext.Provider>
-  );
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
 };
 
-export const useAccessibility = () => {
-  const context = useContext(AccessibilityContext);
-  if (context === undefined) {
-    throw new Error('useAccessibility must be used within an AccessibilityProvider');
-  }
-  return context;
+export const useTheme = () => {
+    const context = useContext(ThemeContext);
+    if (context === undefined) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
 };

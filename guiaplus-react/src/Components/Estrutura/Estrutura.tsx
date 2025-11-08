@@ -7,6 +7,7 @@ function Estrutura() {
   const tituloDaRota = (matches[matches.length - 1]?.handle as { titulo: string } | undefined)?.titulo || 'Título Padrão';
   
   return (
+    // O div.container precisa ser o wrapper principal
     <div className="container">
       <Cabecalho titulo={tituloDaRota} />
       <main className="main-content">
@@ -16,5 +17,3 @@ function Estrutura() {
     </div>
   );
 }
-
-export default Estrutura;
