@@ -418,3 +418,170 @@
     @apply p-8;
   }
 }
+
+/* ===== Hero azul (topo) ===== */
+.integrantes-hero {
+  max-width: 900px;
+  margin: 28px auto 16px;
+  padding: 22px 28px;
+  background: #eaf4ff;           /* azul clarinho */
+  border: 1px solid #d8e8ff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.integrantes-hero h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 400;              /* tiramos o negrito */
+  color: #0f172a;
+}
+
+.integrantes-hero p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.45;
+}
+
+/* ===== Grid dos cards ===== */
+.integrantes-container {
+  max-width: 1100px;
+  margin: 24px auto 50px;        /* aumentei um pouquinho o espaçamento */
+  padding: 0 16px;
+  display: grid;
+  gap: 28px;                     /* mais espaçamento entre os cards */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ===== Card do membro ===== */
+.integrantes-membros {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 14px 20px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.integrantes-membros img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== Nome + Sobrenome coladinhos ===== */
+.integrantes-membros .nome {
+  margin: 10px 0 2px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.integrantes-membros .sobrenome {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #374151;
+  line-height: 1.1;
+}
+
+/* ===== Botões ===== */
+.botao-github,
+.botao-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 88%;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.05s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.botao-github {
+  background: #1f2937;
+  color: #fff;
+}
+
+.botao-linkedin {
+  background: #0a66c2;
+  color: #fff;
+}
+
+.botao-github img,
+.botao-linkedin img {
+  width: 18px;
+  height: 18px;
+}
+
+.botao-github:hover,
+.botao-linkedin:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Seção de Perguntas Frequentes ===== */
+.faq-container {
+  max-width: 950px;
+  margin: 40px auto 70px;
+  padding: 0 20px;
+}
+
+.faq-header {
+  text-align: center;
+  background: #eaf4ff; /* azul clarinho, igual ao da pág. Integrantes */
+  border: 1px solid #d8e8ff;
+  border-radius: 16px;
+  padding: 24px 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+}
+
+.faq-header h1 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  font-weight: 400; /* sem negrito */
+  color: #0f172a;
+}
+
+.faq-header p {
+  margin: 0;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ===== Lista de Perguntas ===== */
+.faq-lista details {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin: 10px 0;
+  padding: 12px 18px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.faq-lista details:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.faq-lista summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: #0a2472;
+}
+
+.faq-lista p {
+  margin-top: 10px;
+  color: #374151;
+  line-height: 1.5;
+}
