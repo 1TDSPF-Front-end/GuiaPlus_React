@@ -18,6 +18,11 @@ forma prática e sem barreiras.
 
 -   https://github.com/1TDSPF-Front-end/GuiaPlus_React
 
+### Link do vídeo do Youtube
+
+-   https://youtu.be/xgXCEQBRU-8
+
+
 ### 1. Login
 
 -   Tela inicial de autenticação do usuário.
