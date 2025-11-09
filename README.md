@@ -35,6 +35,13 @@ forma prática e sem barreiras.
 -   Github
 
 
+### Integrantes do Projeto
+
+-   Guilherme Sola Garcia (RM: 563674)
+-   Clayton Alves dos Santos (RM: 562285)
+-   Pedro Santos Pequini (RM: 561842)
+
+
 ### 1. Login
 
 -   Tela inicial de autenticação do usuário.
