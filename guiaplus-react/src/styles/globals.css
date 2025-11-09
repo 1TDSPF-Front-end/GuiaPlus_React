@@ -52,6 +52,17 @@
 /* Estilos do site (normal) */
 /* -------------------------------------- */
 
+
+.main-content {
+  @apply flex-1 w-full max-w-7xl mx-auto p-5;
+}
+
+/* Correção para o Flexbox: Adicionamos flex-grow e flex-shrink */
+.main-content {
+  @apply flex-1 w-full max-w-7xl mx-auto p-5; 
+  flex-grow: 1; /* Garante que ele ocupe todo o espaço vertical restante */
+}
+
 .navbar {
   @apply bg-[#041d3d] font-bold p-4 sticky top-0 shadow-lg z-50 text-white w-screen;
 }
