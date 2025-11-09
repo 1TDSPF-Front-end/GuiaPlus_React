@@ -456,12 +456,7 @@
 
 /* ===== Card do membro ===== */
 .integrantes-membros {
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 18px 14px 20px;
-  text-align: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  @apply mx-auto bg-[#f8fafc] border border-[#e5e7eb] rounded-xl p-4 text-center shadow-lg;
 }
 
 .integrantes-membros img {
