@@ -19,7 +19,6 @@ export default function Contato() {
       aria-label="Informações de Contato"
       style={{ fontSize: fontSize === 'large' ? '1.2rem' : '1rem' }}
     >
-      {/* Cabeçalho */}
       <header className="text-center mt-10 mb-10">
         <h2 className="text-3xl font-bold tracking-tight text-slate-900">Contato</h2>
         <p className="mt-3 text-lg text-slate-600">
@@ -29,7 +28,6 @@ export default function Contato() {
         </p>
       </header>
 
-      {/* Bloco com os canais */}
       <div className="grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-6 shadow-sm">
           <h3 className="text-xl font-semibold mb-4 text-slate-900">Canais oficiais</h3>
@@ -70,7 +68,6 @@ export default function Contato() {
           </dl>
         </div>
 
-        {/* Formulário */}
         <div className="rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-6 shadow-sm">
           <h3 className="text-xl font-semibold mb-4 text-slate-900">Envie uma mensagem</h3>
 
@@ -139,7 +136,6 @@ export default function Contato() {
         </div>
       </div>
 
-      {/* FAQ curto opcional */}
       <div className="mt-10 rounded-2xl border border-slate-200 bg-white/60 p-6">
         <h3 className="text-lg font-semibold mb-3 text-slate-900">Antes de enviar, já viu se…</h3>
         <ul className="list-disc pl-5 space-y-2 text-slate-700">

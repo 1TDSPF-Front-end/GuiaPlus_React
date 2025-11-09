@@ -10,7 +10,6 @@ export default function FAQ() {
       aria-label="Perguntas Frequentes"
       style={{ fontSize: fontSize === 'large' ? '1.2rem' : '1rem' }}
     >
-      {/* ===== Cabeçalho da seção ===== */}
       <div className="faq-header">
         <h1>Perguntas Frequentes</h1>
         <p>
@@ -20,7 +19,6 @@ export default function FAQ() {
         </p>
       </div>
 
-      {/* ===== Lista de perguntas ===== */}
       <div className="faq-lista">
         <details>
           <summary>O site Guia+ é seguro para idosos?</summary>

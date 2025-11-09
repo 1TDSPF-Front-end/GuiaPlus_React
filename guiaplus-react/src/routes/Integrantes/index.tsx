@@ -15,7 +15,6 @@ export default function Integrantes() {
       className={divClassName}
       style={{ fontSize: fontSize === 'large' ? '1.2rem' : '1rem' }}
     >
-      {/* Banner / Hero melhorado */}
       <div className="texto-integrantes integrantes-hero">
         <h1>Conheça nossos integrantes</h1>
         <p>
@@ -24,7 +23,6 @@ export default function Integrantes() {
         </p>
       </div>
 
-      {/* Cards dos membros */}
       <div className="integrantes-container">
         <div className="integrantes-membros">
           <img src={claytonImg} alt="Clayton Alves dos Santos" />
