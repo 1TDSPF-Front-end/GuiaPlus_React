@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { useAccessibility } from "../../contexts/AccessibilityContext";
 import { useNavigate } from "react-router-dom";
 
-// 🚨 ATENÇÃO: SUBSTITUA ESTE ENDPOINT PELA URL PÚBLICA DA SUA API JAVA
+// url da api (esta levando cerca de 1 minuto para carregar os lembretes)
 const API_URL = "https://api-java-guiaplus.onrender.com/lembrete";
 
-// --- TIPOS ADAPTADOS DA ESTRUTURA JAVA ---
-// Baseado no Lembrete.java (id_lembrete, nome, descricaoLembrete, dataLembrete)
+//TIPOS ADAPTADOS DA ESTRUTURA JAVA
 interface LembreteAPI {
   id_lembrete: number;
   nome: string;
@@ -14,11 +13,11 @@ interface LembreteAPI {
   dataLembrete: string; // Usamos string para o formato de data/hora do input/JSON
 }
 
-// Tipo que o Front-End USA (adiciona 'concluido' para o estado visual)
+
 interface LembreteFrontend extends LembreteAPI {
   concluido: boolean;
 }
-// --- FIM DOS TIPOS ---
+
 
 export default function Lembretes() {
   const [lembretes, setLembretes] = useState<LembreteFrontend[]>([]);
@@ -28,12 +27,11 @@ export default function Lembretes() {
   const accessibilityClass = highContrast ? "alto-contraste" : "";
   const navigate = useNavigate();
   
-  // ----------------------------------------------------
+
   // READ (GET) - Busca dados da API
-  // ----------------------------------------------------
   const buscarLembretes = async () => {
     try {
-      // 1. Requisita os dados com GET [cite: uploaded:tailwindcss_merged.pdf]
+
       const response = await fetch(API_URL); 
       
       if (!response.ok) {
@@ -42,7 +40,7 @@ export default function Lembretes() {
       
       const data: LembreteAPI[] = await response.json();
       
-      // Mapeamento: Adiciona a flag 'concluido' (status visual do Front-End)
+      
       const mappedData: LembreteFrontend[] = data.map(item => ({
         ...item,
         concluido: false, // Assume não concluído ao carregar
@@ -57,26 +55,25 @@ export default function Lembretes() {
     }
   };
 
-  // Executa a busca na montagem do componente [cite: uploaded:tailwindcss_merged.pdf]
+  
   useEffect(() => {
     buscarLembretes();
   }, []); 
 
-  // ----------------------------------------------------
+  
   // CREATE (POST) - Adicionar novo lembrete
-  // ----------------------------------------------------
   const adicionar = async () => {
     if (!novoTexto.trim() || !novaData) return;
 
     const lembreteParaEnvio = {
-      // Usamos 'novoTexto' para os campos que a API espera
+      
       nome: novoTexto, 
       descricaoLembrete: novoTexto, 
       dataLembrete: novaData,
     };
 
     try {
-      // 2. Envia os dados com POST [cite: uploaded:tailwindcss_merged.pdf]
+      // 2. Envia os dados com POST
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,11 +95,11 @@ export default function Lembretes() {
     }
   };
   
-  // ----------------------------------------------------
+
   // UPDATE (PUT) - Marcar/Desmarcar como concluído
-  // ----------------------------------------------------
+
   const toggle = async (lembrete: LembreteFrontend) => {
-    // Alterna o status localmente para a UI
+    
     const statusConcluido = !lembrete.concluido;
 
     // Objeto para envio (PUT)
@@ -112,8 +109,7 @@ export default function Lembretes() {
       nome: lembrete.nome,
       descricaoLembrete: lembrete.descricaoLembrete,
       dataLembrete: lembrete.dataLembrete,
-      // Se a sua API Java tiver o campo 'concluido', você o enviaria aqui:
-      // concluido: statusConcluido 
+      
     };
 
     try {
@@ -141,9 +137,9 @@ export default function Lembretes() {
   };
 
 
-  // ----------------------------------------------------
+  
   // DELETE - Remover lembrete
-  // ----------------------------------------------------
+ 
   const remover = async (id: number) => {
     try {
       // 4. Deleta o registro com DELETE
@@ -170,7 +166,6 @@ export default function Lembretes() {
       <div className="max-w-2xl mx-auto w-full">
         <h2 className="text-2xl font-bold mb-4">Agendamento de Lembretes</h2>
 
-        {/* Formulário */}
         <div className="flex flex-col md:flex-row gap-2 mb-6">
           <input
             type="text"
@@ -193,7 +188,6 @@ export default function Lembretes() {
           </button>
         </div>
 
-        {/* Tutorial – bloco inserido */}
         <div className="mb-8 p-4 border rounded bg-gray-50">
           <h3 className="text-xl font-semibold mb-3">Como usar os lembretes</h3>
           <ol className="list-decimal pl-5 space-y-2">
@@ -220,7 +214,6 @@ export default function Lembretes() {
           </ol>
         </div>
 
-        {/* Lista de Lembretes */}
         <ul className="space-y-3">
           {lembretes.map((l) => (
             <li
@@ -233,9 +226,9 @@ export default function Lembretes() {
                     l.concluido ? "line-through text-gray-500" : "text-gray-900"
                   }`}
                 >
-                  {l.descricaoLembrete} {/* Campo Java */}
+                  {l.descricaoLembrete} 
                 </span>
-                <div className="text-sm text-gray-600">{l.dataLembrete}</div> {/* Campo Java */}
+                <div className="text-sm text-gray-600">{l.dataLembrete}</div> 
               </div>
               <div className="flex gap-2 mt-2 sm:mt-0">
                 <button
