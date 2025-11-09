@@ -22,6 +22,18 @@ forma prática e sem barreiras.
 
 -   https://youtu.be/QP8wYSRerXM
 
+### Tecnologias Utilizadas
+
+-   Quarkus
+-   IntelliJ
+-   React
+-   Vite 
+-   NodeJs
+-   VSCode 
+-   Render
+-   Git
+-   Github
+
 
 ### 1. Login
 
