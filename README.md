@@ -20,7 +20,7 @@ forma prática e sem barreiras.
 
 ### Link do vídeo do Youtube
 
--   https://youtu.be/xgXCEQBRU-8
+-   https://youtu.be/QP8wYSRerXM
 
 
 ### 1. Login
