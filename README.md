@@ -41,6 +41,11 @@ forma prática e sem barreiras.
 -   Clayton Alves dos Santos (RM: 562285)
 -   Pedro Santos Pequini (RM: 561842)
 
+### Estrutura das páginas
+
+<img width="265" height="878" alt="image" src="https://github.com/user-attachments/assets/d1ca2819-5fc6-4414-a0e4-88482d927239" />
+
+------------------------------------------------------------------------
 
 ### 1. Login
 
